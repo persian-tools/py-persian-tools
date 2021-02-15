@@ -16,6 +16,8 @@ def test_bank_name():
     assert card_number.bank_name('6219861034529007') == 'بانک سامان'
     assert card_number.bank_name('6219861034529007') == 'بانک سامان'
 
+    assert card_number.bank_name('1319861034529007') is None
+
     with pytest.raises(InvalidCardNumber, match='.*is an invalid card number'):
         card_number.bank_name('621986103452900')
         card_number.bank_name('9999991034529007')

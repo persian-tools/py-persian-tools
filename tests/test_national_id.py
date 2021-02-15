@@ -11,6 +11,7 @@ def test_verify_national_id():
     assert national_id.verify('4271427685') is False
     assert national_id.verify('0200203041') is False
     assert national_id.verify('0684159415') is False
+    assert national_id.verify('068415941d') is False
 
     assert national_id.verify('0499370899')
     assert national_id.verify('0790419904')
