@@ -1,8 +1,11 @@
 from typing import Union
 import random
+from .places_code import data as places_code
+from .exceptions import InvalidNationalId
+from ..digits import convert_to_en
 
 
-def verify(national_id: Union[int, str]) -> bool:
+def validate(national_id: Union[int, str]) -> bool:
     code = str(national_id).zfill(10)
 
     if not code.isdigit() or len(code) != 10:
@@ -38,3 +41,18 @@ def generate_random() -> str:
         last_number = 11 - remaining
 
     return random_number + str(last_number)
+
+
+def find_place(national_id: Union[int, str]) -> Union[dict, None]:
+    if not validate(national_id):
+        raise InvalidNationalId(national_id)
+
+    code = convert_to_en(national_id[:3])
+    places = [place for place in places_code if code in place['code']]
+
+    if places:
+        place = places[0].copy()
+        place['code'] = place['code'].split('-')
+        return place
+
+    return None
