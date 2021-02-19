@@ -38,6 +38,11 @@ digits.convert_to_en('sth ۱۲۳٤٥٦') # 'sth 123456'
 digits.convert_to_ar(123)          # '۱۲۳'
 digits.convert_to_ar('123')        # '۱۲۳'
 digits.convert_to_ar('sth 123۴۵۶') # 'sth ۱۲۳٤٥٦'
+
+digits.convert_to_word(500443)                  # پانصد هزار و چهارصد و چهل و سه
+digits.convert_to_word(-500443)                 # منفی پانصد هزار و چهارصد و چهل و سه
+digits.convert_to_word(500443, ordinal=True)    # پانصد هزار و چهارصد و چهل و سوم
+digits.convert_to_word(30000000000)             # سی میلیارد
 ```
 
 ### separator
