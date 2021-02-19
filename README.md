@@ -12,7 +12,7 @@ _soon on pypi_
 ## Modules
 
 1. [digits](#digits)
-2. [commas](#commas)
+2. [separator](#separator)
 3. [ordinal suffix](#ordinal-suffix)
 4. [bank](#bank)
     1. [card number](#card-number)
@@ -40,21 +40,21 @@ digits.convert_to_ar('123')        # '۱۲۳'
 digits.convert_to_ar('sth 123۴۵۶') # 'sth ۱۲۳٤٥٦'
 ```
 
-### commas
-Adding or removing commas will handle; also separator can change in second argument
+### separator
+Adding or removing separator will handle; default separator is ',' but can change with second input.
 
 ```python
-from persian_tools import commas
+from persian_tools import separator
 
-commas.add(300)                 # '300'
-commas.add(3000000)             # '3,000,000'
-commas.add(3000000, '/')        # '3/000/000'
-commas.add('۳۰۰۰۰')             # '۳۰,۰۰۰'
+separator.add(300)                 # '300'
+separator.add(3000000)             # '3,000,000'
+separator.add(3000000, '/')        # '3/000/000'
+separator.add('۳۰۰۰۰')             # '۳۰,۰۰۰'
 
-commas.remove('300')            # '300'
-commas.remove('3,000,000')      # '3000000'
-commas.remove('3/000/000', '/') # '3000000'
-commas.remove('۳۰,۰۰۰')         # '۳۰۰۰۰'
+separator.remove('300')            # '300'
+separator.remove('3,000,000')      # '3000000'
+separator.remove('3/000/000', '/') # '3000000'
+separator.remove('۳۰,۰۰۰')         # '۳۰۰۰۰'
 ```
 
 ### ordinal suffix
