@@ -5,8 +5,8 @@ from .exceptions import InvalidNationalId
 from ..digits import convert_to_en
 
 
-def validate(national_id: Union[int, str]) -> bool:
-    code = str(national_id).zfill(10)
+def validate(national_id: str) -> bool:
+    code = national_id.zfill(10)
 
     if not code.isdigit() or len(code) != 10:
         return False
@@ -43,7 +43,7 @@ def generate_random() -> str:
     return random_number + str(last_number)
 
 
-def find_place(national_id: Union[int, str]) -> Union[dict, None]:
+def find_place(national_id: str) -> Union[dict, None]:
     if not validate(national_id):
         raise InvalidNationalId(national_id)
 
