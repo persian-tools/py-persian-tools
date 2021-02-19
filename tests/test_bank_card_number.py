@@ -1,5 +1,5 @@
-from persian_tools import card_number
-from persian_tools.card_number.exceptions import InvalidCardNumber
+from persian_tools.bank import card_number
+from persian_tools.bank.exceptions import InvalidCardNumber
 import pytest
 
 

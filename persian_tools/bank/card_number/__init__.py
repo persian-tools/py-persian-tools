@@ -1,8 +1,8 @@
 import re
 from typing import Union
-from .exceptions import InvalidCardNumber
+from ..exceptions import InvalidCardNumber
 from .banks_code import data as banks_code
-from ..digits import convert_to_en
+from ...digits import convert_to_en
 
 
 def validate(card_number: str) -> bool:
