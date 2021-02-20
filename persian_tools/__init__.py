@@ -1,3 +1,8 @@
+__author__ = 'Ali Madihi (mrunderline)'
+__version__ = '0.0.1'
+__date__ = '2021-02-20'
+
+
 class LANGUAGES:
     EN = 'en'
     FA = 'fa'
