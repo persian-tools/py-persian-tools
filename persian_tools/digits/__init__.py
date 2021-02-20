@@ -1,8 +1,14 @@
 from typing import Union
-from .. import LANGUAGES
 from math import floor
 from .strings import SCALE, NUMBER_TEXT
 from ..ordinal_suffix import add as add_ordinal_suffix
+
+
+class LANGUAGES:
+    EN = 'en'
+    FA = 'fa'
+    AR = 'ar'
+
 
 SUPPORTED_CHARS = {
     LANGUAGES.EN: '0123456789',

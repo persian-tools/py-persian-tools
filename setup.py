@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='persian_tools',
-    packages=['persian_tools'],
+    packages=setuptools.find_packages(),
     version=import_module('persian_tools').__version__,
     license='MIT',
     description='An anthology of a variety of tools for the Persian language in Python',
