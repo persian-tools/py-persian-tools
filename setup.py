@@ -1,19 +1,19 @@
-from distutils.core import setup
+import setuptools
 from importlib import import_module
 
 
-def get_long_description():
-    readme = open("README.rst").read()
-    return "\n\n".join(readme)
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
 
-setup(
+setuptools.setup(
     name='persian_tools',
     packages=['persian_tools'],
     version=import_module('persian_tools').__version__,
     license='MIT',
     description='An anthology of a variety of tools for the Persian language in Python',
-    long_description=get_long_description(),
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     author='Ali Madihi (mrunderline)',
     author_email='alimadihib@gmail.com',
     url='https://github.com/persian-tools/py-persian-tools',

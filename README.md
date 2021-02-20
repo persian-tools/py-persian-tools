@@ -1,4 +1,4 @@
-# Py Persian Tools
+# Persian Tools
 
 An anthology of a variety of tools for the Persian language in Python
 
@@ -7,7 +7,7 @@ An anthology of a variety of tools for the Persian language in Python
 
 ## Installation
 
-_soon on pypi_
+`pip install persian-tools`
 
 ## Modules
 
