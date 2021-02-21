@@ -20,6 +20,8 @@ An anthology of a variety of tools for the Persian language in Python
 5. [national id](#national-id)
 
 ## Usage
+Let's take a look at what an example test case would look like using `persian-tools`.
+
 ### digits
 This module will help you to normalize digits from Persian, Arabic and English to only one of them.
 
@@ -38,6 +40,11 @@ digits.convert_to_en('sth ۱۲۳٤٥٦') # 'sth 123456'
 digits.convert_to_ar(123)          # '۱۲۳'
 digits.convert_to_ar('123')        # '۱۲۳'
 digits.convert_to_ar('sth 123۴۵۶') # 'sth ۱۲۳٤٥٦'
+```
+
+`persian-tools` also, has another function to convert numbers to words; you can convert result to ordinal mode with `ordinal=True` in inputs.
+```python
+from persian_tools import digits
 
 digits.convert_to_word(500443)                  # پانصد هزار و چهارصد و چهل و سه
 digits.convert_to_word(-500443)                 # منفی پانصد هزار و چهارصد و چهل و سه
@@ -46,7 +53,7 @@ digits.convert_to_word(30000000000)             # سی میلیارد
 ```
 
 ### separator
-Adding or removing separator will handle; default separator is ',' but can change with second input.
+Adding or removing thousands separators will handle; default separator is ',' but can change with second input.
 
 ```python
 from persian_tools import separator
@@ -63,7 +70,7 @@ separator.remove('۳۰,۰۰۰')         # '۳۰۰۰۰'
 ```
 
 ### ordinal suffix
-Adding or removing ordinal suffix will handle
+Adding or removing ordinal suffix for persian numbers in word will handle.
 
 ```python
 from persian_tools import ordinal_suffix
@@ -80,7 +87,10 @@ ordinal_suffix.remove('سی اُم')      # 'سی'
 
 ### bank
 #### card number
-This module has useful functions related to bank cards number
+This module has useful functions related to bank cards number, like:
+* validating them
+* find card number, bank name
+* extract card numbers from a text
 
 ```python
 from persian_tools.bank import card_number
@@ -114,7 +124,10 @@ card_number.extract_card_numbers('''شماره کارتم رو برات نوشت
 *soon*
 
 ### national id
-This module has useful functions related to national id
+This module has useful functions related to iranian national id (code-e melli), like:
+* validating them
+* generate a random one
+* find place of national id by the prefix of id
 
 ```python
 from persian_tools import national_id
