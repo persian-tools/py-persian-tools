@@ -4,6 +4,7 @@ from persian_tools import separator
 def test_add_separator():
     assert separator.add(1000000) == '1,000,000'
     assert separator.add(100000.0) == '100,000.0'
+    assert separator.add(100000.0001) == '100,000.0001'
     assert separator.add('some text 1000000') == 'some text 1,000,000'
     assert separator.add('۱۲۳۴۵۶۷۸۹۰', '٫') == '۱٫۲۳۴٫۵۶۷٫۸۹۰'
     assert separator.add('١٢٣٤٥٦٧٨٩٠') == '١,٢٣٤,٥٦٧,٨٩٠'

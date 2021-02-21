@@ -3,10 +3,13 @@ import re
 
 
 def add(number: Union[int, float, str], separator: str = ',') -> str:
+    number = str(number)
+    parts = number.split('.')
     pattern = '(\\d)(?=(\\d{3})+(?!\\d))'
     repl = r'\1{sep}'.format(sep=separator)
-    result = str(number)
-    return re.sub(pattern, repl, result)
+
+    parts[0] = re.sub(pattern, repl, parts[0])
+    return '.'.join(parts)
 
 
 def remove(number: str, separator: str = ',') -> str:

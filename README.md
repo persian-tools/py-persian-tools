@@ -60,6 +60,7 @@ from persian_tools import separator
 
 separator.add(300)                 # '300'
 separator.add(3000000)             # '3,000,000'
+separator.add(3000000.0003)        # '3,000,000.0003'
 separator.add(3000000, '/')        # '3/000/000'
 separator.add('۳۰۰۰۰')             # '۳۰,۰۰۰'
 
