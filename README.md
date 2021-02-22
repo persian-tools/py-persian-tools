@@ -137,7 +137,28 @@ card_number.extract_card_numbers('''شماره کارتم رو برات نوشت
 ```
 
 #### sheba
-*soon*
+`sheba` module contain 2 functions:
+* validating them
+* find bank data of a sheba number
+
+```python
+
+from persian_tools.bank import sheba
+
+sheba.validate('IR820540102680020817909002')    # True
+sheba.validate('IR01234567890123456789')        # False
+
+sheba.bank_data('IR820540102680020817909002')
+# {
+#     'nickname': 'parsian',
+#     'name': 'Parsian Bank',
+#     'persian_name': 'بانک پارسیان',
+#     'card_prefix': ['622106', '627884'],
+#     'sheba_code': ['054'],
+#     'account_number': '020817909002',
+#     'formatted_account_number': '002-00817909-002'
+# }
+```
 
 ### national id
 This module has useful functions related to iranian national id (code-e melli), like:
