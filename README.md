@@ -90,7 +90,7 @@ ordinal_suffix.remove('سی اُم')      # 'سی'
 #### card number
 This module has useful functions related to bank cards number, like:
 * validating them
-* find card number, bank name
+* find bank data of a card number
 * extract card numbers from a text
 
 ```python
@@ -100,24 +100,39 @@ card_number.validate('6037701689095443')    # True
 card_number.validate('6219861034529007')    # True
 card_number.validate('6219861034529008')    # False
 
-card_number.bank_name('6037701689095443')   # 'بانک کشاورزی'
-card_number.bank_name('6219861034529007')   # 'بانک سامان'
-card_number.bank_name('6219861034529007')   # 'بانک سامان'
+card_number.bank_data('6219861034529007')
+# {'nickname': 'saman', 'name': 'Saman Bank', 'persian_name': 'بانک سامان', 'card_prefix': ['621986'], 'sheba_code': ['056']}
+card_number.bank_data('6037701689095443')
+# {'nickname': 'keshavarzi', 'name': 'Keshavarzi', 'persian_name': 'بانک کشاورزی', 'card_prefix': ['603770', '639217'], 'sheba_code': ['016']}
+
+
 
 card_number.extract_card_numbers('''شماره کارتم رو برات نوشتم:
                                      6219-8610-3452-9007
                                      اینم یه شماره کارت دیگه ای که دارم
-                                     5022291070873466
-                                     ۵۰۲۲۲۹۱۰۸۱۸۷۳۴۶۶
-                                     ۵۰۲۲-۲۹۱۰-۷۰۸۷-۳۴۶۶''',            # first argument is a text
+                                    ۵۰۲۲-۲۹۱۰-۷۰۸۷-۳۴۶۶                                     
+                                    5022291070873466''',                # first argument is a text
                                     check_validation=True,              # a boolean that define you need only valid card numbers in result, default: True
                                     detect_bank_name=True,              # this will add bank name in result, default: False
                                     filter_valid_card_numbers=True)     # just valid card numbers will be in result; be careful to `check_validation` be also True, default: True
 # result
 # [
-#     {'pure': '6219861034529007', 'base': '6219-8610-3452-9007', 'index': 1, 'is_valid': True, 'bank_name': 'بانک سامان'},
-#     {'pure': '5022291070873466', 'base': '5022291070873466', 'index': 2, 'is_valid': True, 'bank_name': 'بانک پاسارگاد'},
-#     {'pure': '5022291070873466', 'base': '۵۰۲۲-۲۹۱۰-۷۰۸۷-۳۴۶۶', 'index': 4, 'is_valid': True, 'bank_name': 'بانک پاسارگاد'}
+#    {'pure': '6219861034529007', 'base': '6219-8610-3452-9007', 'index': 1, 'is_valid': True,
+#     'bank_data': {
+#         'nickname': 'saman',
+#         'name': 'Saman Bank',
+#         'persian_name': 'بانک سامان',
+#         'card_prefix': ['621986'],
+#         'sheba_code': ['056'],
+#     }},
+#    {'pure': '5022291070873466', 'base': '5022291070873466', 'index': 3, 'is_valid': True,
+#     'bank_data': {
+#         'nickname': 'pasargad',
+#         'name': 'Pasargad Bank',
+#         'persian_name': 'بانک پاسارگاد',
+#         'card_prefix': ['502229', '639347'],
+#         'sheba_code': ['057'],
+#     }},
 # ]
 ```
 

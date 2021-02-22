@@ -1,8 +1,8 @@
 import re
 from typing import Union
-from ..exceptions import InvalidCardNumber
+from .exceptions import InvalidCardNumber
 from .banks_code import data as banks_code
-from ...digits import convert_to_en
+from ..digits import convert_to_en
 
 
 def validate(card_number: str) -> bool:
@@ -21,16 +21,20 @@ def validate(card_number: str) -> bool:
     return _sum % 10 == 0
 
 
-def bank_name(card_number: str) -> Union[str, None]:
+def bank_data(card_number: str) -> Union[dict, None]:
     if not validate(card_number):
         raise InvalidCardNumber(card_number)
 
-    bank_code = card_number[:6]
-    bank_names = [bank['name'] for bank in banks_code if bank['code'] == bank_code]
+    card_prefix = card_number[:6]
+    bank = [bank for bank in banks_code if card_prefix in bank.get('card_prefix', [])]
 
-    if bank_names:
-        return bank_names[0]
-    return None
+    if len(bank) < 1:
+        return None
+
+    data = bank[0].copy()
+    if data.get('account_number_calculator'):
+        del data['account_number_calculator']
+    return data
 
 
 def extract_card_numbers(text: str, check_validation: bool = True, detect_bank_name: bool = False,
@@ -55,7 +59,7 @@ def extract_card_numbers(text: str, check_validation: bool = True, detect_bank_n
             result['is_valid'] = validate(card_number)
 
         if detect_bank_name and (result.get('is_valid') or validate(card_number)):
-            result['bank_name'] = bank_name(card_number)
+            result['bank_data'] = bank_data(card_number)
 
         results.append(result)
 

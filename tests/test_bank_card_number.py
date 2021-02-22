@@ -12,15 +12,15 @@ def test_validate():
 
 
 def test_bank_name():
-    assert card_number.bank_name('6037701689095443') == 'بانک کشاورزی'
-    assert card_number.bank_name('6219861034529007') == 'بانک سامان'
-    assert card_number.bank_name('6219861034529007') == 'بانک سامان'
+    assert card_number.bank_data('6037701689095443').get('persian_name') == 'بانک کشاورزی'
+    assert card_number.bank_data('6219861034529007').get('persian_name') == 'بانک سامان'
+    assert card_number.bank_data('6219861034529007').get('persian_name') == 'بانک سامان'
 
-    assert card_number.bank_name('1319861034529007') is None
+    assert card_number.bank_data('1319861034529007') is None
 
     with pytest.raises(InvalidCardNumber, match='.*is an invalid card number'):
-        card_number.bank_name('621986103452900')
-        card_number.bank_name('9999991034529007')
+        card_number.bank_data('621986103452900')
+        card_number.bank_data('9999991034529007')
 
 
 mock_string = '''شماره کارتم رو برات نوشتم:
@@ -102,11 +102,29 @@ def test_extract_card_numbers_5():
 
     expected = [
         {'pure': '6219861034529007', 'base': '6219-8610-3452-9007', 'index': 1, 'is_valid': True,
-         'bank_name': 'بانک سامان'},
+         'bank_data': {
+             'nickname': 'saman',
+             'name': 'Saman Bank',
+             'persian_name': 'بانک سامان',
+             'card_prefix': ['621986'],
+             'sheba_code': ['056'],
+         }},
         {'pure': '5022291070873466', 'base': '5022291070873466', 'index': 2, 'is_valid': True,
-         'bank_name': 'بانک پاسارگاد'},
+         'bank_data': {
+             'nickname': 'pasargad',
+             'name': 'Pasargad Bank',
+             'persian_name': 'بانک پاسارگاد',
+             'card_prefix': ['502229', '639347'],
+             'sheba_code': ['057'],
+         }},
         {'pure': '5022291070873466', 'base': '۵۰۲۲-۲۹۱۰-۷۰۸۷-۳۴۶۶', 'index': 4, 'is_valid': True,
-         'bank_name': 'بانک پاسارگاد'},
+         'bank_data': {
+             'nickname': 'pasargad',
+             'name': 'Pasargad Bank',
+             'persian_name': 'بانک پاسارگاد',
+             'card_prefix': ['502229', '639347'],
+             'sheba_code': ['057'],
+         }},
     ]
 
     actual = card_number.extract_card_numbers(mock_string, check_validation=True, filter_valid_card_numbers=True,
