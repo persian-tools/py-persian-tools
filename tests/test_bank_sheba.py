@@ -23,6 +23,14 @@ def test_bank_data():
     assert all(v == actual[k] for k, v in expected.items())
     assert len(expected) == len(actual)
 
+    actual = sheba.bank_data('IR550570022080013447370101')
+    expected = {'nickname': 'pasargad', 'name': 'Pasargad Bank', 'persian_name': 'بانک پاسارگاد',
+                'card_prefix': ['502229', '639347'], 'sheba_code': ['057'], 'account_number': '220800134473701',
+                'formatted_account_number': '220-800-13447370-1'}
+
+    assert all(v == actual[k] for k, v in expected.items())
+    assert len(expected) == len(actual)
+
     with pytest.raises(InvalidShebaNumber, match='.*is an invalid sheba number'):
         sheba.bank_data('IR012345678901234567890123')
         sheba.bank_data('IR012345678A01234567890123')
