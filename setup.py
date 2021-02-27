@@ -1,10 +1,8 @@
 import setuptools
 from importlib import import_module
 
-
 with open("README.md", "r") as fh:
     long_description = fh.read()
-
 
 setuptools.setup(
     name='persian_tools',
@@ -17,6 +15,7 @@ setuptools.setup(
     author='Ali Madihi (mrunderline)',
     author_email='alimadihib@gmail.com',
     url='https://github.com/persian-tools/py-persian-tools',
+    download_url='https://github.com/persian-tools/py-persian-tools/archive/v0.0.8.zip',
     keywords=['digits', 'commas', 'iranian bank', 'card number', 'national id', 'national code', 'ordinal suffix'],
     classifiers=[
         'Development Status :: 4 - Beta',
