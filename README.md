@@ -18,6 +18,7 @@ An anthology of a variety of tools for the Persian language in Python
     1. [card number](#card-number)
     2. [sheba](#sheba)
 5. [national id](#national-id)
+6. [phone number](#phone-number)
 
 ## Usage
 Let's take a look at what an example test case would look like using `persian-tools`.
@@ -177,4 +178,22 @@ national_id.generate_random()           # '1156537101'
 
 national_id.find_place('0906582709')    # {'code': ['089', '090'], 'city': 'کاشمر', 'province': 'خراسان رضوی'}
 national_id.find_place('0643005846')    # {'code': ['064', '065'], 'city': 'بیرجند', 'province': 'خراسان جنوبی'}
+```
+
+### phone number
+This module can validate and give you some data from a phone number.
+
+```python
+from persian_tools import phone_number
+
+phone_number.validate('09123456789')        # True
+phone_number.validate('+989123456789')      # True
+phone_number.validate('989123456789')       # True
+phone_number.validate('98912345678')        # False
+
+
+phone_number.operator_data('09123456789')
+# {'province': ['البرز', 'زنجان', 'سمنان', 'قزوین', 'قم', 'برخی از شهرستان های استان مرکزی'], 'base': 'تهران', 'type': ['permanent'], 'operator': 'همراه اول'}
+phone_number.operator_data('09303456789')
+# {'province': [], 'base': 'کشوری', 'type': ['permanent', 'credit'], 'operator': 'ایرانسل'}
 ```
