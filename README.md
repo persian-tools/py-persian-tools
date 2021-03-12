@@ -19,6 +19,7 @@ An anthology of a variety of tools for the Persian language in Python
     2. [sheba](#sheba)
 5. [national id](#national-id)
 6. [phone number](#phone-number)
+7. [bill](#bill)
 
 ## Usage
 Let's take a look at what an example test case would look like using `persian-tools`.
@@ -196,4 +197,31 @@ phone_number.operator_data('09123456789')
 # {'province': ['البرز', 'زنجان', 'سمنان', 'قزوین', 'قم', 'برخی از شهرستان های استان مرکزی'], 'base': 'تهران', 'type': ['permanent'], 'operator': 'همراه اول'}
 phone_number.operator_data('09303456789')
 # {'province': [], 'base': 'کشوری', 'type': ['permanent', 'credit'], 'operator': 'ایرانسل'}
+```
+
+### bill
+With `bill_id` and `payment_id` (or just `barcode`), you can get detail of a `bill`.
+
+```python
+from persian_tools import bill
+
+bill.get_detail(bill_id=7748317800142, payment_id=1770160)
+# result
+# {'amount': 1700,
+#  'barcode': '77483178001420001770160',
+#  'bill_id': 7748317800142,
+#  'is_valid': True,
+#  'is_valid_bill_id': True,
+#  'is_valid_payment_id': True,
+#  'payment_id': 1770160,
+#  'type': 'تلفن ثابت'}
+
+bill.get_detail(barcode='77483178001420001770160')
+# same result
+
+# default currency is set to Toman, but can change like as below
+bill.get_detail(barcode='77483178001420001770160', currency=bill.CURRENCY_RIAL)
+# result
+# {'amount': 17000,
+#  ...
 ```
