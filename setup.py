@@ -15,7 +15,7 @@ setuptools.setup(
     author='Ali Madihi (mrunderline)',
     author_email='alimadihib@gmail.com',
     url='https://github.com/persian-tools/py-persian-tools',
-    download_url='https://github.com/persian-tools/py-persian-tools/archive/v0.0.8.zip',
+    download_url='https://github.com/persian-tools/py-persian-tools/archive/v0.0.9.zip',
     keywords=['digits', 'commas', 'iranian bank', 'card number', 'national id', 'national code', 'ordinal suffix'],
     classifiers=[
         'Development Status :: 4 - Beta',
