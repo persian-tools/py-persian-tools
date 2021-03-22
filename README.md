@@ -20,6 +20,7 @@ An anthology of a variety of tools for the Persian language in Python
 5. [national id](#national-id)
 6. [phone number](#phone-number)
 7. [bill](#bill)
+8. [plate](#plate)
 
 ## Usage
 Let's take a look at what an example test case would look like using `persian-tools`.
@@ -225,3 +226,33 @@ bill.get_detail(barcode='77483178001420001770160', currency=bill.CURRENCY_RIAL)
 # {'amount': 17000,
 #  ...
 ```
+
+### plate
+Get information(province, category, type) about vehicles plate.
+
+```python
+from persian_tools import plate
+
+plate.get_info('12D45147')
+# result
+# {'category': 'دیپلمات',
+#   'province': 'مرکزی',
+#   'template': '12D451ایران47',
+#   'type': 'Car'}
+
+plate.get_info('12345678')
+# result
+# {'category': None,
+#  'province': 'مرکز تهران',
+#  'template': '123-45678',
+#  'type': 'Motorcycle'}
+
+plate.is_valid('12D45147') # True
+plate.is_valid('12345678') # True
+plate.is_valid('1234567') # False
+plate.is_valid('1204567') # False
+```
+
+Note: Plates that have farsi digits in them(like: الف، ب، ص) will be returned in this template:
+
+`{first_two_digits}{plate_character}{next_three_digits}ایران{province_code}`
