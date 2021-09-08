@@ -1,7 +1,7 @@
 def add(number: str) -> str:
     if number.endswith('ی'):
         return number + ' اُم'
-    if number.endswith('یک'):
+    if number == 'یک':
         return number[:-2] + 'اول'
     if number.endswith('سه'):
         return number[:-2] + 'سوم'
