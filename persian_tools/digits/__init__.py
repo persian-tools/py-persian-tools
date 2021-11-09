@@ -1,7 +1,8 @@
 from typing import Union
 from math import floor
-from .strings import SCALE, NUMBER_TEXT
-from ..ordinal_suffix import add as add_ordinal_suffix
+from .strings import SCALE, NUMBER_TEXT, TYPO_LIST, JOINERS, PREFIXES, UNITS, TEN, MAGNITUDE
+from ..ordinal_suffix import add as add_ordinal_suffix, remove as remove_ordinal_suffix
+from ..separator import add as add_separator
 
 
 class LANGUAGES:
@@ -93,3 +94,52 @@ def convert_to_word(number: int, ordinal: bool = False) -> Union[str, None]:
         words = add_ordinal_suffix(words)
 
     return words
+
+
+def convert_from_word(text: Union[str, None], digits: str = LANGUAGES.EN, separator: bool = False) -> Union[str, None]:
+    def tokenize(_text: str) -> list:
+        for typo in TYPO_LIST.keys():
+            if typo in _text:
+                _text = _text.replace(typo, TYPO_LIST[typo])
+
+        slitted_text = _text.split(' ')
+        slitted_text = [txt for txt in slitted_text if txt != JOINERS[0]]
+
+        return slitted_text
+
+    def compute(tokens: list) -> int:
+        result = 0
+        is_negative = False
+
+        for token in tokens:
+            token = convert_to_en(token)
+
+            if token == PREFIXES[0]:
+                is_negative = True
+            elif UNITS.get(token):
+                result += UNITS[token]
+            elif TEN.get(token):
+                result += TEN[token]
+            elif token.isdigit():
+                result += int(token)
+            elif MAGNITUDE.get(token):
+                result *= MAGNITUDE[token]
+
+        if is_negative:
+            result *= -1
+
+        return result
+
+    if text == '' or text is None:
+        return None
+
+    text = remove_ordinal_suffix(text)
+
+    computed = compute(tokenize(text))
+    if separator:
+        computed = add_separator(computed)
+
+    if digits != LANGUAGES.EN:
+        computed = _conversion(computed, digits)
+
+    return computed
