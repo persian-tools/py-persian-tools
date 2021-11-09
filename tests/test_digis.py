@@ -45,7 +45,7 @@ def test_convert_from_word():
     assert digits.convert_from_word('دوازده هزار بیست دو', separator=True) == '12,022'
     assert digits.convert_from_word('دوازده هزار و بیست و دو', separator=True) == '12,022'
     assert digits.convert_from_word('شیش صد و بیست و هفت') == 627
-    assert digits.convert_from_word('حقوق شیش صد و ۲۷ میلیون تومان سالانه') == 627_000_000
+    assert digits.convert_from_word('حقوق شیش صد و ۲۷ میلیون تومان سالانه') == 627 * 1000 * 1000
 
 
 def test_convert_from_word_to_ar():
