@@ -55,6 +55,20 @@ digits.convert_to_word(500443, ordinal=True)    # پانصد هزار و چها�
 digits.convert_to_word(30000000000)             # سی میلیارد
 ```
 
+to convert words to number, you can use this function with different args:
+```python
+from persian_tools import digits
+
+digits.convert_from_word('منفی سه هزارمین')                        # -3000
+digits.convert_from_word('منفی سه هزارم', digits='fa')             # -۳۰۰۰
+digits.convert_from_word('منفی سه هزار')                           # -3000
+digits.convert_from_word('سه هزار دویست و دوازده')                 # 3212
+digits.convert_from_word('دوازده هزار بیست دو', separator=True)    # '12,022'
+digits.convert_from_word('حقوق شیش صد و ۲۷ میلیون تومان سالانه')    # 627000000
+```
+
+Note: as you can see in examples, this function will remove ordinal suffix by default.
+
 ### separator
 Adding or removing thousands separators will handle; default separator is ',' but can change with second input.
 
