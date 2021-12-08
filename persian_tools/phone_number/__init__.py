@@ -16,7 +16,7 @@ def _get_operator_data(phone_number: str) -> Union[dict, bool]:
 
 
 def validate(phone_number: str) -> bool:
-    return _get_operator_data(phone_number) is not False
+    return bool(_get_operator_data(phone_number))
 
 
 def operator_data(phone_number: str) -> bool:
