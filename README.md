@@ -18,9 +18,10 @@ An anthology of a variety of tools for the Persian language in Python
     1. [card number](#card-number)
     2. [sheba](#sheba)
 5. [national id](#national-id)
-6. [phone number](#phone-number)
-7. [bill](#bill)
-8. [plate](#plate)
+6. [economic national id](#economic-national-id)
+7. [phone number](#phone-number)
+8. [bill](#bill)
+9. [plate](#plate)
 
 ## Usage
 Let's take a look at what an example test case would look like using `persian-tools`.
