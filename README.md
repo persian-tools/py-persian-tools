@@ -197,7 +197,7 @@ national_id.find_place('0643005846')    # {'code': ['064', '065'], 'city': 'بی
 ```
 
 ### economic national id
-This module has two functions to generate and validate iranian economic national id (shenas-e melli).
+This module contains two functions to generate random iranian economic national id (shenas-e melli) and validate any given id.
 
 ```python
 from persian_tools import economic_national_id
@@ -205,8 +205,8 @@ from persian_tools import economic_national_id
 economic_national_id.validate('10380284790')      # True
 economic_national_id.validate('11053639140')      # False
 
-economic_national_id.generate_random()           # '10100387143'
-economic_national_id.generate_random()           # '77111986110'
+economic_national_id.generate_random()            # '10100387143'
+economic_national_id.generate_random()            # '77111986110'
 ```
 
 ### phone number
