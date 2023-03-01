@@ -18,7 +18,7 @@ An anthology of a variety of tools for the Persian language in Python
     1. [card number](#card-number)
     2. [sheba](#sheba)
 5. [national id](#national-id)
-6. [economic national id](#economic-national-id)
+6. [legal id](#legal-id)
 7. [phone number](#phone-number)
 8. [bill](#bill)
 9. [plate](#plate)
@@ -197,17 +197,17 @@ national_id.find_place('0906582709')    # {'code': ['089', '090'], 'city': 'کا
 national_id.find_place('0643005846')    # {'code': ['064', '065'], 'city': 'بیرجند', 'province': 'خراسان جنوبی'}
 ```
 
-### economic national id
-This module contains two functions to generate random iranian economic national id (shenas-e melli) and validate any given id.
+### legal id
+This module contains two functions to generate random iranian legal id (shenas-e melli) and validate any given id.
 
 ```python
-from persian_tools import economic_national_id
+from persian_tools import legal_id
 
-economic_national_id.validate('10380284790')      # True
-economic_national_id.validate('11053639140')      # False
+legal_id.validate('10380284790')      # True
+legal_id.validate('11053639140')      # False
 
-economic_national_id.generate_random()            # '10100387143'
-economic_national_id.generate_random()            # '77111986110'
+legal_id.generate_random()            # '10100387143'
+legal_id.generate_random()            # '77111986110'
 ```
 
 ### phone number
