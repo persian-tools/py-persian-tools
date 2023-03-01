@@ -26,7 +26,6 @@ def test_bank_data():
         'account_number': '020817909002',
         'formatted_account_number': '002-00817909-002'
     }
-
     assert all(v == actual[k] for k, v in expected.items())
     assert len(expected) == len(actual)
 
@@ -40,7 +39,19 @@ def test_bank_data():
         'account_number': '220800134473701',
         'formatted_account_number': '220-800-13447370-1'
     }
+    assert all(v == actual[k] for k, v in expected.items())
+    assert len(expected) == len(actual)
 
+    actual = sheba.bank_data('IR790610000000700796858044')
+    expected = {
+        'nickname': 'shahr',
+        'name': 'City Bank',
+        'persian_name': 'بانک شهر',
+        'card_prefix': ['502806', '504706'],
+        'sheba_code': ['061'],
+        'account_number': '700796858044',
+        'formatted_account_number': '700796858044'
+    }
     assert all(v == actual[k] for k, v in expected.items())
     assert len(expected) == len(actual)
 
