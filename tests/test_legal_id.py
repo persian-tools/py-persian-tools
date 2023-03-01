@@ -31,6 +31,8 @@ def test_validate_legal_id():
     assert legal_id.validate('10380284792') is False
     assert legal_id.validate('10380285692') is False
     assert legal_id.validate('09748208301') is False
+    assert legal_id.validate('097482083013') is False
+    assert legal_id.validate('0974820830a') is False
 
 
 def test_generate_random_legal_id():
