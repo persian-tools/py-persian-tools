@@ -60,6 +60,7 @@ def test_normalize():
     assert phone_number.normalize('9322002580', '98') == '989322002580'
     assert phone_number.normalize('9322002580', '0098') == '00989322002580'
     assert phone_number.normalize('9322002580', '0') == '09322002580'
+    assert phone_number.normalize('9322002580') == '09322002580'
 
     with pytest.raises(InvalidPhoneNumber, match='.*is an invalid phone number'):
         phone_number.normalize('0', '+98')

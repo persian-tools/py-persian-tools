@@ -30,7 +30,7 @@ def operator_data(phone_number: str) -> bool:
     return res
 
 
-def normalize(phone_number: str, token: str) -> str:
+def normalize(phone_number: str, token: str = '0') -> str:
     if token not in VALID_TOKENS:
         raise InvalidToken(token)
 

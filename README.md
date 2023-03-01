@@ -211,7 +211,7 @@ legal_id.generate_random()            # '77111986110'
 ```
 
 ### phone number
-This module can validate and give you some data from a phone number.
+This module can validate, normalize and give you some data from a phone number.
 
 ```python
 from persian_tools import phone_number
@@ -221,6 +221,11 @@ phone_number.validate('+989123456789')      # True
 phone_number.validate('989123456789')       # True
 phone_number.validate('98912345678')        # False
 
+phone_number.normalize('00989022002580')    # 09022002580
+phone_number.normalize('+989022002580')     # 09022002580
+phone_number.normalize('9022002580')        # 09022002580
+phone_number.normalize('9022002580', '0')   # 09022002580
+phone_number.normalize('9022002580', '+98') # 09022002580
 
 phone_number.operator_data('09123456789')
 # {'province': ['البرز', 'زنجان', 'سمنان', 'قزوین', 'قم', 'برخی از شهرستان های استان مرکزی'], 'base': 'تهران', 'type': ['permanent'], 'operator': 'همراه اول'}
