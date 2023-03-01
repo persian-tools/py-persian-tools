@@ -26,7 +26,7 @@ def test_validate_legal_id():
     assert legal_id.validate('15826563190') is False
     assert legal_id.validate('11053639140') is False
     assert legal_id.validate('18090089802') is False
-    assert legal_id.validate('123000000') is False
+    assert legal_id.validate('123001000') is False
     assert legal_id.validate('11111111111') is False
     assert legal_id.validate('10380284792') is False
     assert legal_id.validate('10380285692') is False
