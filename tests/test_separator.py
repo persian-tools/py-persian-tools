@@ -9,6 +9,9 @@ def test_add_separator():
     assert separator.add('۱۲۳۴۵۶۷۸۹۰', '٫') == '۱٫۲۳۴٫۵۶۷٫۸۹۰'
     assert separator.add('١٢٣٤٥٦٧٨٩٠') == '١,٢٣٤,٥٦٧,٨٩٠'
 
+    assert separator.add('') == ''
+    assert separator.add(0) == '0'
+
 
 def test_remove_separator():
     assert separator.remove('1,000,000') == '1000000'
