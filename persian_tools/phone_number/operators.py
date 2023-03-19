@@ -4,6 +4,9 @@ OPERATORS = {
     'Irancell': 'ایرانسل',
     'Taliya': 'تالیا',
     'RightTel': 'رایتل',
+    'TeleKish': 'تله کیش',
+    'ApTel': 'آپتل',
+    'SamanTel': 'سامانتل',
 }
 
 IRANCELL_SAMPLE = {
@@ -14,15 +17,10 @@ IRANCELL_SAMPLE = {
 }
 
 data = {
+    # MCI
     '910': {
         'base': 'کشوری',
         'province': [],
-        'type': ['permanent', 'credit'],
-        'operator': OPERATORS['MCI'],
-    },
-    '914': {
-        'province': ['آذربایجان شرقی', 'اردبیل', 'اصفهان'],
-        'base': 'آذربایجان غربی',
         'type': ['permanent', 'credit'],
         'operator': OPERATORS['MCI'],
     },
@@ -41,6 +39,12 @@ data = {
     '913': {
         'province': ['یزد', 'چهارمحال و بختیاری', 'کرمان'],
         'base': 'اصفهان',
+        'type': ['permanent', 'credit'],
+        'operator': OPERATORS['MCI'],
+    },
+    '914': {
+        'province': ['آذربایجان شرقی', 'اردبیل', 'اصفهان'],
+        'base': 'آذربایجان غربی',
         'type': ['permanent', 'credit'],
         'operator': OPERATORS['MCI'],
     },
@@ -104,12 +108,28 @@ data = {
         'type': ['credit'],
         'operator': OPERATORS['MCI'],
     },
+    '995': {
+        'province': [],
+        'base': 'کشوری',
+        'type': ['credit', 'permanent'],
+        'operator': OPERATORS['MCI'],
+    },
+    '996': {
+        'province': [],
+        'base': 'کشوری',
+        'type': ['credit', 'permanent'],
+        'operator': OPERATORS['MCI'],
+    },
+
+    # Taliya
     '932': {
         'province': [],
         'base': 'کشوری',
         'type': ['credit'],
         'operator': OPERATORS['Taliya'],
     },
+
+    # RightTel
     '920': {
         'province': [],
         'base': 'کشوری',
@@ -128,6 +148,14 @@ data = {
         'type': ['credit'],
         'operator': OPERATORS['RightTel'],
     },
+    '923': {
+        'province': [],
+        'base': 'کشوری',
+        'type': ['credit'],
+        'operator': OPERATORS['RightTel'],
+    },
+
+    # Irancell
     '930': IRANCELL_SAMPLE,
     '933': IRANCELL_SAMPLE,
     '935': IRANCELL_SAMPLE,
@@ -135,6 +163,7 @@ data = {
     '937': IRANCELL_SAMPLE,
     '938': IRANCELL_SAMPLE,
     '939': IRANCELL_SAMPLE,
+    '900': IRANCELL_SAMPLE,
     '901': IRANCELL_SAMPLE,
     '902': IRANCELL_SAMPLE,
     '903': IRANCELL_SAMPLE,
@@ -153,10 +182,102 @@ data = {
         'type': ['credit'],
         'operator': OPERATORS['Irancell'],
     },
-    '998': {
+
+    # ShatelMobile
+    '99810': {
         'province': [],
         'base': 'کشوری',
         'type': ['credit'],
         'operator': OPERATORS['ShatelMobile'],
+    },
+    '99811': {
+        'province': [],
+        'base': 'کشوری',
+        'type': ['credit'],
+        'operator': OPERATORS['ShatelMobile'],
+    },
+    '99812': {
+        'province': [],
+        'base': 'کشوری',
+        'type': ['credit'],
+        'operator': OPERATORS['ShatelMobile'],
+    },
+    '99813': {
+        'province': [],
+        'base': 'کشوری',
+        'type': ['credit'],
+        'operator': OPERATORS['ShatelMobile'],
+    },
+    '99814': {
+        'province': [],
+        'base': 'کشوری',
+        'type': ['credit'],
+        'operator': OPERATORS['ShatelMobile'],
+    },
+    '99815': {
+        'province': [],
+        'base': 'کشوری',
+        'type': ['credit'],
+        'operator': OPERATORS['ShatelMobile'],
+    },
+    '99816': {
+        'province': [],
+        'base': 'کشوری',
+        'type': ['credit'],
+        'operator': OPERATORS['ShatelMobile'],
+    },
+    '99817': {
+        'province': [],
+        'base': 'کشوری',
+        'type': ['credit'],
+        'operator': OPERATORS['ShatelMobile'],
+    },
+
+    # TeleKish
+    '934': {
+        'province': [],
+        'base': 'کشوری',
+        'type': ['permanent'],
+        'operator': OPERATORS['TeleKish'],
+    },
+
+    # ApTel
+    '99910': {
+        'province': [],
+        'base': 'کشوری',
+        'type': ['permanent'],
+        'operator': OPERATORS['ApTel'],
+    },
+    '99911': {
+        'province': [],
+        'base': 'کشوری',
+        'type': ['permanent'],
+        'operator': OPERATORS['ApTel'],
+    },
+    '99913': {
+        'province': [],
+        'base': 'کشوری',
+        'type': ['permanent'],
+        'operator': OPERATORS['ApTel'],
+    },
+    '99914': {
+        'province': [],
+        'base': 'کشوری',
+        'type': ['credit'],
+        'operator': OPERATORS['ApTel'],
+    },
+
+    # SamanTel
+    '9999': {
+        'province': [],
+        'base': 'کشوری',
+        'type': ['credit', 'permanent'],
+        'operator': OPERATORS['SamanTel'],
+    },
+    '99999': {
+        'province': [],
+        'base': 'کشوری',
+        'type': ['permanent'],
+        'operator': OPERATORS['SamanTel'],
     },
 }

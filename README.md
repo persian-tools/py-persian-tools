@@ -18,7 +18,7 @@ An anthology of a variety of tools for the Persian language in Python
     1. [card number](#card-number)
     2. [sheba](#sheba)
 5. [national id](#national-id)
-6. [economic national id](#economic-national-id)
+6. [legal id](#legal-id)
 7. [phone number](#phone-number)
 8. [bill](#bill)
 9. [plate](#plate)
@@ -197,21 +197,21 @@ national_id.find_place('0906582709')    # {'code': ['089', '090'], 'city': 'کا
 national_id.find_place('0643005846')    # {'code': ['064', '065'], 'city': 'بیرجند', 'province': 'خراسان جنوبی'}
 ```
 
-### economic national id
-This module contains two functions to generate random iranian economic national id (shenas-e melli) and validate any given id.
+### legal id
+This module contains two functions to generate random iranian legal id (shenas-e melli) and validate any given id.
 
 ```python
-from persian_tools import economic_national_id
+from persian_tools import legal_id
 
-economic_national_id.validate('10380284790')      # True
-economic_national_id.validate('11053639140')      # False
+legal_id.validate('10380284790')      # True
+legal_id.validate('11053639140')      # False
 
-economic_national_id.generate_random()            # '10100387143'
-economic_national_id.generate_random()            # '77111986110'
+legal_id.generate_random()            # '10100387143'
+legal_id.generate_random()            # '77111986110'
 ```
 
 ### phone number
-This module can validate and give you some data from a phone number.
+This module can validate, normalize and give you some data from a phone number.
 
 ```python
 from persian_tools import phone_number
@@ -221,6 +221,11 @@ phone_number.validate('+989123456789')      # True
 phone_number.validate('989123456789')       # True
 phone_number.validate('98912345678')        # False
 
+phone_number.normalize('00989022002580')    # 09022002580
+phone_number.normalize('+989022002580')     # 09022002580
+phone_number.normalize('9022002580')        # 09022002580
+phone_number.normalize('9022002580', '0')   # 09022002580
+phone_number.normalize('9022002580', '+98') # 09022002580
 
 phone_number.operator_data('09123456789')
 # {'province': ['البرز', 'زنجان', 'سمنان', 'قزوین', 'قم', 'برخی از شهرستان های استان مرکزی'], 'base': 'تهران', 'type': ['permanent'], 'operator': 'همراه اول'}
