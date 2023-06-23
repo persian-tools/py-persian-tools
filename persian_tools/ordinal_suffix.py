@@ -1,4 +1,6 @@
 def add(number: str) -> str:
+    if number == 'یک':
+        return "اول"
     if number.endswith('ی'):
         return number + ' اُم'
     if number.endswith('سه'):
@@ -13,6 +15,8 @@ def remove(word: str) -> str:
 
     if word.endswith('سوم'):
         return word[:-3] + 'سه'
+    elif word in ['اول', 'اولین']:
+        return "یک"
     elif word.endswith('م'):
         return word[:-1]
     return word

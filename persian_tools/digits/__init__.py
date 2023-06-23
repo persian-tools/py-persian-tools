@@ -62,6 +62,8 @@ def convert_to_word(number: int, ordinal: bool = False) -> Union[str, None]:
 
     if number == 0:
         return 'صفر'
+    elif number == 1:
+        return 'اول'
 
     is_negative = number < 0
     number = abs(number)
