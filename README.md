@@ -225,7 +225,7 @@ phone_number.normalize('00989022002580')    # 09022002580
 phone_number.normalize('+989022002580')     # 09022002580
 phone_number.normalize('9022002580')        # 09022002580
 phone_number.normalize('9022002580', '0')   # 09022002580
-phone_number.normalize('9022002580', '+98') # 09022002580
+phone_number.normalize('9022002580', '+98') # +989022002580
 
 phone_number.operator_data('09123456789')
 # {'province': ['البرز', 'زنجان', 'سمنان', 'قزوین', 'قم', 'برخی از شهرستان های استان مرکزی'], 'base': 'تهران', 'type': ['permanent'], 'operator': 'همراه اول'}
