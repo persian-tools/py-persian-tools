@@ -5,7 +5,7 @@ from .exceptions import InvalidPhoneNumber, InvalidToken
 
 MOBILE_REGEX = '(?:[+|0{2}]?98)?(?:0)?(\\d{3})+(\\d{3})+(\\d{4})'
 VALID_TOKENS = ['+98', '98', '0098', '0']
-MOBILE_SUFFIX_REGEX = '^(?:\+98|98|0098|0)'
+MOBILE_SUFFIX_REGEX = r'^(?:\+98|98|0098|0)'
 
 
 def _get_operator_data(phone_number: str) -> Union[dict, bool]:
@@ -19,8 +19,14 @@ def _get_operator_data(phone_number: str) -> Union[dict, bool]:
 
 
 def validate(phone_number: str) -> bool:
-    return _get_operator_data(phone_number) is not False
+    operator = _get_operator_data(phone_number)
+    if not operator:
+        return False
 
+    if not re.fullmatch(MOBILE_REGEX, phone_number):
+        return False
+
+    return True
 
 def operator_data(phone_number: str) -> bool:
     res = _get_operator_data(phone_number)
