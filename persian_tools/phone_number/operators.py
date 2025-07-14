@@ -232,6 +232,37 @@ data = {
         'type': ['credit'],
         'operator': OPERATORS['ShatelMobile'],
     },
+    '99818': {
+        'province': [],
+        'base': 'کشوری',
+        'type': ['credit'],
+        'operator': OPERATORS['ShatelMobile'],
+    },
+    '99819': {
+        'province': [],
+        'base': 'کشوری',
+        'type': ['credit'],
+        'operator': OPERATORS['ShatelMobile'],
+    },
+    '99820': {
+        'province': [],
+        'base': 'کشوری',
+        'type': ['credit'],
+        'operator': OPERATORS['ShatelMobile'],
+    },
+    '99821': {
+        'province': [],
+        'base': 'کشوری',
+        'type': ['credit'],
+        'operator': OPERATORS['ShatelMobile'],
+    },
+    '99822': {
+        'province': [],
+        'base': 'کشوری',
+        'type': ['credit'],
+        'operator': OPERATORS['ShatelMobile'],
+    },
+
 
     # TeleKish
     '934': {
