@@ -109,6 +109,7 @@ def convert_from_word(text: Union[str, None], digits: str = LANGUAGES.EN, separa
 
     def compute(tokens: list) -> int:
         result = 0
+        current_group = 0
         is_negative = False
 
         for token in tokens:
@@ -117,13 +118,16 @@ def convert_from_word(text: Union[str, None], digits: str = LANGUAGES.EN, separa
             if token == PREFIXES[0]:
                 is_negative = True
             elif UNITS.get(token):
-                result += UNITS[token]
+                current_group += UNITS[token]
             elif TEN.get(token):
-                result += TEN[token]
+                current_group += TEN[token]
             elif token.isdigit():
-                result += int(token)
+                current_group += int(token)
             elif MAGNITUDE.get(token):
-                result *= MAGNITUDE[token]
+                result += current_group * MAGNITUDE[token]
+                current_group = 0
+
+        result += current_group
 
         if is_negative:
             result *= -1
