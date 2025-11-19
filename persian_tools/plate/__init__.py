@@ -1,17 +1,18 @@
 import re
+from typing import Dict, Union
 from .dataset import provinces as plate_provinces, categories as plate_categories
 from .dataset import TYPE_CAR, TYPE_MOTORCYCLE
 from .exceptions import InvalidPlateLength
 
 
-def normalize(plate: str):
+def normalize(plate: str) -> Dict[str, Union[str, None]]:
     non_digit_regex = r'\D'
     char = ''.join(re.findall(non_digit_regex, plate)) or None
     numbers = re.sub(non_digit_regex, '', plate)
     return {'char': char, 'numbers': numbers}
 
 
-def _car_info(char: str, numbers: str):
+def _car_info(char: str, numbers: str) -> Dict[str, Union[str, None]]:
     province_code = int(numbers[5:7])
     _type = TYPE_CAR
     template = numbers[0:2] + str(char) + numbers[2:5] + 'ایران' + str(province_code)
@@ -27,7 +28,7 @@ def _car_info(char: str, numbers: str):
     }
 
 
-def _motorcycle_info(numbers: str):
+def _motorcycle_info(numbers: str) -> Dict[str, Union[str, None]]:
     province_code = int(numbers[0:3])
     _type = TYPE_MOTORCYCLE
     template = str(province_code) + '-' + numbers[3:]
@@ -42,7 +43,7 @@ def _motorcycle_info(numbers: str):
     }
 
 
-def get_info(plate: str):
+def get_info(plate: str) -> Dict[str, Union[str, None]]:
     normal_plate = normalize(plate)
 
     if len(normal_plate['numbers']) == 7:
@@ -54,7 +55,7 @@ def get_info(plate: str):
     raise InvalidPlateLength(plate)
 
 
-def is_valid(plate: str):
+def is_valid(plate: str) -> bool:
     normal_plate = normalize(plate)
     numbers = normal_plate['numbers']
 

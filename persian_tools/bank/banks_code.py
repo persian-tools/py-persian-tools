@@ -1,4 +1,7 @@
-def parsian_account_number_calculator(sheba: str) -> dict:
+from typing import Dict
+
+
+def parsian_account_number_calculator(sheba: str) -> Dict[str, str]:
     sheba = sheba[14:]
     formatted = '0' + sheba[:2] + '-0' + sheba[2:9] + '-' + sheba[9:]
 
@@ -8,7 +11,7 @@ def parsian_account_number_calculator(sheba: str) -> dict:
     }
 
 
-def pasargad_account_number_calculator(sheba: str) -> dict:
+def pasargad_account_number_calculator(sheba: str) -> Dict[str, str]:
     sheba = sheba[7:]
     while sheba[0] == '0':
         sheba = sheba[1:]
@@ -21,7 +24,7 @@ def pasargad_account_number_calculator(sheba: str) -> dict:
     }
 
 
-def shahr_account_number_calculator(sheba: str) -> dict:
+def shahr_account_number_calculator(sheba: str) -> Dict[str, str]:
     sheba = sheba[7:]
     while sheba[0] == '0':
         sheba = sheba[1:]
