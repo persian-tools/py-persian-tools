@@ -41,6 +41,9 @@ def test_convert_to_word():
     assert digits.convert_to_word(-123, ordinal=True) == 'منفی صد و بیست و سوم'
     assert digits.convert_to_word(33, ordinal=True) == 'سی و سوم'
     assert digits.convert_to_word(45, ordinal=True) == 'چهل و پنجم'
+    assert digits.convert_to_word(1, ordinal=True) == 'اول'
+    assert digits.convert_to_word(41, ordinal=True) == 'چهل و یکم'
+    assert digits.convert_to_word(101, ordinal=True) == 'صد و یکم'
 
 
 def test_convert_from_word():
@@ -79,3 +82,10 @@ def test_convert_from_word_with_ordinal():
     assert len(str(digits.convert_from_word("منفی سه هزارمین"))) == 5
     assert digits.convert_from_word("منفی سی اُم") == -30
     assert digits.convert_from_word("سی و سوم") == 33
+    assert digits.convert_from_word("سی و یکم") == 31
+    assert digits.convert_from_word("سی و یکمین") == 31
+    assert digits.convert_from_word("اول") == 1
+    assert digits.convert_from_word("اولین") == 1
+    assert digits.convert_from_word("یکمین") == 1
+
+
